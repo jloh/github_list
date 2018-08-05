@@ -1,0 +1,12 @@
+name = "GitHub List"
+license = "MIT"
+licenselink = "https://github.com/jloh/yourtheme/blob/master/LICENSE"
+description = "Hugo theme to list your GitHub repositories"
+homepage = "https://jloh.codes/"
+tags = ["GitHub", "Portfolio"]
+features = ["dynamic", "generated"]
+min_version = "0.41"
+
+[author]
+  name = "James Loh"
+  homepage = "https://jloh.co/l/blog"

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ $.Site.Language.Lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ "css/spectre-v0.5.3.min.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/fontawesome-v1.css" | relURL }}" />
+  <title>{{ .Site.Title }}</title>
+
+</head>
+<body>
+  {{ partialCached "nav" . }}
+  {{ block "main" . }}
+  {{ end }}
+  <script type="text/javascript" src="{{ "js/clipboard.min.js" | relURL }}"></script>
+  <script type="text/javascript" src="{{ "js/buttons.js" | relURL }}"></script>
+</body>
+</html>

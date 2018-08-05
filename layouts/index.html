@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="container grid-md">
+  {{- $scratch := newScratch -}}
+  {{- $repos := $.Site.Params.github_repos -}}
+  {{- range $repos -}}
+    {{- $github_url := ( printf "https://api.github.com/users/%s/repos?sort=updated" .) -}}
+    {{- $resp := getJSON $github_url -}}
+    {{- $scratch.Add "results" $resp -}}
+  {{- end -}}
+  <h1 class="text-center">Repos</h1>
+  {{- range sort ($scratch.Get "results") "updated_at" "desc" -}}
+    {{- if eq .fork false }}
+      {{ partial "repo" . }}
+    {{ end }}
+  {{ end }}
+  <h1 class="text-center">Forks</h1>
+  {{- range sort ($scratch.Get "results") "updated_at" "desc" -}}
+    {{- if eq .fork true }}
+      {{ partial "repo" . }}
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}

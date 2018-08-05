@@ -1,0 +1,9 @@
+<header class="navbar container grid-lg mt-2 mb-0">
+  <section class="navbar-section">
+    <a href="{{ .Site.BaseURL }}" class="btn btn-link navbar-brand mr-2" title="{{ .Site.Title }}">{{ .Site.Title }}</a>
+  </section>
+  <section class="navbar-section">
+    <span>{{ with $.Site.Params.description }}{{ . }}{{ end }}</span>
+  </section>
+</header>
+<div class="divider"></div>
