@@ -1,23 +1,45 @@
 {{ define "main" }}
-<div class="container grid-md">
+<div class="container grid-sm">
   {{- $scratch := newScratch -}}
   {{- $repos := $.Site.Params.github_repos -}}
   {{- range $repos -}}
     {{- $github_url := ( printf "https://api.github.com/users/%s/repos?sort=updated" .) -}}
     {{- $resp := getJSON $github_url -}}
-    {{- $scratch.Add "results" $resp -}}
+  {{- $scratch.Add "results" $resp -}}
   {{- end -}}
-  <h1 class="text-center">Repos</h1>
-  {{- range sort ($scratch.Get "results") "updated_at" "desc" -}}
-    {{- if eq .fork false }}
-      {{ partial "repo" . }}
-    {{ end }}
-  {{ end }}
-  <h1 class="text-center">Forks</h1>
-  {{- range sort ($scratch.Get "results") "updated_at" "desc" -}}
-    {{- if eq .fork true }}
-      {{ partial "repo" . }}
-    {{ end }}
-  {{ end }}
+  <h1 class="text-center mb-0">Repos</h1>
+  <table class="table table-striped mb-2">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>updated</th>
+        <th>clone</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{- range sort ($scratch.Get "results") "updated_at" "desc" -}}
+        {{- if eq .fork false }}
+          {{ partial "repo" . }}
+        {{ end }}
+      {{ end }}
+    </tbody>
+  </table>
+  <h1 class="text-center pt-2 mb-0">Forks</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>updated</th>
+        <th>clone</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{- range sort ($scratch.Get "results") "updated_at" "desc" -}}
+        {{- if eq .fork true }}
+          {{ partial "repo" . }}
+        {{ end }}
+      {{ end }}
+    </tbody>
+  </table>
 </div>
 {{ end }}
