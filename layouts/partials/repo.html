@@ -1,5 +1,5 @@
 <tr>
-  <td><a id="{{ printf "%s-%.f" .name .id }}" href="{{ .name | absURL }}" title="{{ .full_name }}">{{ .full_name }}</a></td>
+  <td><a id="{{ printf "%s-%.f" .name .id }}" href="{{ .html_url }}" title="{{ .full_name }}">{{ .full_name }}</a></td>
   <td>{{ dateFormat "02/01/2006" .updated_at }}</td>
   <td><button class="btn btn-sm repo-button" data-clipboard-text="git clone {{ .clone_url }}">clone</button></td>
 </tr>
