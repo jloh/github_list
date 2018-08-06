@@ -1,5 +1,5 @@
 // Taken from clipboardJS website
-var btns = document.querySelectorAll('.copy-button');
+var btns = document.querySelectorAll('.repo-button');
 for (var i = 0; i < btns.length; i++)
 {
   btns[i].addEventListener('mouseleave', clearTooltip);
@@ -8,13 +8,13 @@ for (var i = 0; i < btns.length; i++)
 
 function clearTooltip(e)
 {
-  e.currentTarget.setAttribute('class', 'btn btn-sm text-right copy-button mb-1');
+  e.currentTarget.setAttribute('class', 'btn btn-sm repo-button');
   e.currentTarget.removeAttribute('tooltip');
 }
 
 function showTooltip(elem, msg)
 {
-  elem.setAttribute('class', 'btn btn-sm text-right copy-button mb-1 tooltip');
+  elem.setAttribute('class', 'btn btn-sm repo-button tooltip');
   elem.setAttribute('data-tooltip', msg);
 }
 function fallbackMessage(action)
@@ -36,14 +36,7 @@ function fallbackMessage(action)
   return actionMsg;
 }
 var repoClipboard = new ClipboardJS('.repo-button');
-var clipboardVar  = new ClipboardJS('.copy-button', {
-  text: function (trigger) {
-    const query = trigger.getAttribute('data-clipboard-target');
-    const target = document.querySelector(query);
-    return target.getAttribute('href');
-  }}
-  );
-clipboardVar.on('success', function (e)
+repoClipboard.on('success', function (e)
 {
   e.clearSelection();
   console.info('Action:', e.action);
@@ -51,7 +44,7 @@ clipboardVar.on('success', function (e)
   console.info('Trigger:', e.trigger);
   showTooltip(e.trigger, 'Copied!');
 });
-clipboardVar.on('error', function (e)
+repoClipboard.on('error', function (e)
 {
   console.error('Action:', e.action);
   console.error('Trigger:', e.trigger);
