@@ -1,0 +1,10 @@
+baseURL = "https://example.com"
+languageCode = "en-US"
+title = "gohugo.io"
+theme = "github_list"
+
+[params]
+  description = "Hugo Team [GitHub](https://github.com/gohugoio) repos"
+  github_repos = [
+    "gohugoio"
+  ]
