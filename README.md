@@ -1,6 +1,6 @@
 # GitHub Repo List
 
-GitHub Repo List is a small theme to list all your GitHub repos.
+GitHub Repo List is a small theme to list all your GitHub repos and forks taken live from the API.
 
 ## Quick Start
 
